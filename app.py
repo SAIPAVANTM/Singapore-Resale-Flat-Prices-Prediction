@@ -117,14 +117,22 @@ def prediction():
                     price_p_sqm_log = np.log(price_per_sqm)
 
                     with open("DecisionTree.pkl", "rb") as file:
-                        model_attributes = pickle.load(file)
-                    tree_model = model_attributes['tree_']
+                        model = pickle.load(file)
+                    expected_dtype = np.dtype({
+             'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'],
+             'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'],
+             'offsets': [0, 8, 16, 24, 32, 40, 48, 56],
+             'itemsize': 64
+         })
+         
+         # Convert the loaded model to expected dtype
+                    model = model.astype(expected_dtype)
                     feature_names = ["month", "town", "flat_type", "block", "flat_model", "lease_commence_date", "year", "storey_start", "storey_end", "years_holding", "current_remaining_lease",
                                      "age_of_property", "floor_area_sqm_log", "remaining_lease_log", "price_per_sqm_log"]
                     arr = np.array([[month, tow, f_type, block, f_model, lease_commence_date, year, storey_start, storey_end, years_holding, curr_rem_lease,
                                      age_property, f_area_sqm_log, r_lease_log, price_p_sqm_log]])
                     arr_df = pd.DataFrame(arr, columns = feature_names)
-                    predict = tree_model.predict(arr_df)
+                    predict = model.predict(arr_df)
                     price = np.exp(predict[0])
 
                     st.subheader(f"Predicted Resale Price is: :blue[${price:.2f}]")
