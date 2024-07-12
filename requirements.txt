@@ -4,5 +4,4 @@ pandas==2.2.1
 requests
 streamlit==1.34.0
 scikit-learn==1.4.2
-pickle
 joblib
