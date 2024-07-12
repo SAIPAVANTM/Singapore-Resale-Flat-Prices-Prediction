@@ -118,12 +118,9 @@ def prediction():
 
                     with open("DecisionTree.pkl", "rb") as file:
                         model = pickle.load(file)
-                    feature_names = ["month", "town", "flat_type", "block", "flat_model", "lease_commence_date", "year", "storey_start", "storey_end", "years_holding", "current_remaining_lease",
-                                     "age_of_property", "floor_area_sqm_log", "remaining_lease_log", "price_per_sqm_log"]
-                    arr = np.array([[month, tow, f_type, block, f_model, lease_commence_date, year, storey_start, storey_end, years_holding, curr_rem_lease,
+                    data = np.array([[month, tow, f_type, block, f_model, lease_commence_date, year, storey_start, storey_end, years_holding, curr_rem_lease,
                                      age_property, f_area_sqm_log, r_lease_log, price_p_sqm_log]])
-                    arr_df = pd.DataFrame(arr, columns = feature_names)
-                    predict = model.predict(arr_df)
+                    predict = model.predict(data)
                     price = np.exp(predict[0])
 
                     st.subheader(f"Predicted Resale Price is: :blue[${price:.2f}]")
