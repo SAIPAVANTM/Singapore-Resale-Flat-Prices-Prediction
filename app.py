@@ -45,14 +45,14 @@ def homepage():
     st.markdown("<br>", unsafe_allow_html=True)
     st.subheader("Contact")
     st.write("For any queries or collaborations, feel free to reach out to me:")
-    email_icon = Image.open("C:/Users/saipa/Downloads/mail.jpg")
+    email_icon = Image.open("Email_image.jpg")
     st.write("Email:")
     col1, col2 = st.columns([0.4, 5])
     with col1:
         st.image(email_icon, width=50)
     with col2:
         st.write("tmsaipavan@gmail.com")
-    lin_icon = Image.open("C:/Users/saipa/Downloads/in.jpg")
+    lin_icon = Image.open("Linkedin_image.jpg")
     st.write("LinkedIn:")
     col1, col2 = st.columns([0.4, 5])
     with col1:
