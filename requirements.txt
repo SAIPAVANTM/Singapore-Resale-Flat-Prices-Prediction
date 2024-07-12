@@ -1,8 +1,8 @@
-pip install --upgrade pip
-numpy
-pandas
+﻿category-encoders==2.6.3
+numpy==1.26.4
+pandas==2.2.1
 requests
-streamlit
-scikit-learn
+streamlit==1.34.0
+scikit-learn==1.4.2
 pickle
 joblib
