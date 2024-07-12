@@ -1,7 +1,8 @@
-streamlit
+streamlit==1.12.0
 base64
 PIL
 datetime
 numpy
 pickle
 pandas
+Pillow-9.2.0
