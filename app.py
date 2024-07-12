@@ -127,6 +127,10 @@ def prediction():
          
          # Convert the loaded model to expected dtype
                     model = model.astype(expected_dtype)
+                    joblib.dump(model, "DecisionTree.pkl")
+
+# Load model
+                    model = joblib.load("DecisionTree.pkl")
                     feature_names = ["month", "town", "flat_type", "block", "flat_model", "lease_commence_date", "year", "storey_start", "storey_end", "years_holding", "current_remaining_lease",
                                      "age_of_property", "floor_area_sqm_log", "remaining_lease_log", "price_per_sqm_log"]
                     arr = np.array([[month, tow, f_type, block, f_model, lease_commence_date, year, storey_start, storey_end, years_holding, curr_rem_lease,
