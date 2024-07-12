@@ -20,7 +20,7 @@ import pandas as pd
 def homepage():
     st.title("SINGAPORE RESALE FLAT PRICES PREDICTION")
     st.write("Project By Tumu Mani Sai Pavan")
-    file = open("C:/Users/saipa/Downloads/s1.gif", "rb")
+    file = open("Flats_image.gif", "rb")
     contents = file.read()
     data_gif = base64.b64encode(contents).decode("utf-8")
     file.close()
@@ -116,7 +116,7 @@ def prediction():
                     r_lease_log = np.log1p(remaining_lease)
                     price_p_sqm_log = np.log(price_per_sqm)
 
-                    with open("D:\GUVI CAPSTONE\Capstone_03 - Singapor_House_Resale_Prediction\RandomForestModel.pkl", "rb") as file:
+                    with open("DecisionTree.pkl", "rb") as file:
                         model = pickle.load(file)
                     feature_names = ["month", "town", "flat_type", "block", "flat_model", "lease_commence_date", "year", "storey_start", "storey_end", "years_holding", "current_remaining_lease",
                                      "age_of_property", "floor_area_sqm_log", "remaining_lease_log", "price_per_sqm_log"]
